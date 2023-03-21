@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="script_v2.js"></script>
+
+    <style>
+      canvas {
+        border: 15px solid rgb(89, 92, 88);
+        float: left;
+      }
+      #palete {
+        background-color: rgb(228, 25, 150);
+      }
+      button {
+        background-color: rgb(233, 188, 152);
+        position: absolute;
+        margin-left: 450px;
+        margin-top: 550px;
+        border: solid black;
+        width: 75px;
+        height: 105px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        outline: none;
+        transition: 0.2s all;
+      }
+      button:active {
+        transform: scale(0.95);
+        box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+      }
+      button:hover {
+        transform: scale(0.98);
+      }
+
+      p {
+        background-color: antiquewhite;
+        position: absolute;
+        margin-left: 15px;
+        margin-top: 550px;
+        border: solid black;
+        width: 75px;
+        height: 100px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+      }
+      #div1 {
+        border: solid black;
+        display: flex;
+        flex-direction: row;
+        background-color: rgb(135, 205, 245);
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 320px;
+        height: 100px;
+        position: absolute;
+        margin-left: 110px;
+        margin-top: 550px;
+      }
+      #speed {
+        direction: rtl;
+      }
+      body {
+        background-color: rgb(241, 231, 188);
+      }
+      input {
+        text-align: center;
+      }
+      label {
+        text-align: center;
+        text-decoration-color: black;
+      }
+    </style>
+  </head>
+  <body onload="generate_map()">
+    <canvas id="canva" width="510px" height="510px"> </canvas>
+    <div id="div1">
+      <label for="snake_size">Długość: <output id="num1">2</output></label>
+      <input
+        onchange="changeSize()"
+        oninput="num1.value = this.value"
+        type="range"
+        id="snake_size"
+        name="snake_size"
+        min="2"
+        max="12"
+        step="1"
+        value="2"
+      />
+
+      <label for="food_am"
+        >Ilość jedzenia na mapie: <output id="num2">1</output></label
+      >
+      <input
+        onchange="changeFood()"
+        oninput="num2.value = this.value"
+        type="range"
+        id="food_am"
+        name="food_am"
+        min="1"
+        max="20"
+        step="1"
+        value="1"
+      />
+
+      <label for="walls_am"
+        >Ilość ścian na mapie: <output id="num3">15</output></label
+      >
+      <input
+        onchange="changeWalls()"
+        oninput="num3.value = this.value"
+        type="range"
+        id="walls_am"
+        name="walls_am"
+        min="0"
+        max="30"
+        step="1"
+        value="15"
+      />
+
+      <label for="speed">Szybkość: <output id="num4">100</output></label>
+      <input
+        onchange="changeSpeed()"
+        oninput="num4.value = this.value"
+        type="range"
+        id="speed"
+        name="speed"
+        min="10"
+        max="1000"
+        step="1"
+        value="100"
+      />
+    </div>
+    <button onclick="generate_map()" id="new_map">Generuj na nowo</button>
+
+    <p id="score">Wynik 0</p>
+  </body>
+</html>
+
+<!-- TODO:
+    rozne rodzaje jedzenia - przyspieszanie, spowalnianie, obcinanie + legenda?
+    losowo kolor 
+    max Wynik
+    wycentrowac całość
+    dodac napis żęby uruchamiał spacją + jakis deatch screen 
+    dodać opcje powiekszania mapy
+    wyjebac te globale
+    zamienic sprawdzanie współrzędnych na jakąś mapę/słownik-->
